@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="sling:OsgiConfig"
+    amwaysso.url.authorize="https://esb-qa.amwaynet.com.cn/SBWebApp/sso.authorize"
+    amwaysso.url.exchange="https://esb-qa.amwaynet.com.cn/SBWebApp/sso.exchange"
+    amwaysso.url.sso="https://esb-qa.amwaynet.com.cn/SBWebApp/sso.sso"
+    appid="amwaysearch"
+    appkey="amwaysearchkey"
+    charset="utf-8"
+    proxy="{Boolean}true"
+    proxyHost="acclproxy"
+    proxyPort="80"
+    login.domain="http://10.143.174.79:4503"
+    login.redirect_uri="/bin/ch/exchange"
+    login.cancel_uri="/content/china/accl/solr/index.html"
+    login.index_uri="/content/china/accl/solr/index.html"
+    logout.redirect_uri="/bin/ch/logout"
+/>

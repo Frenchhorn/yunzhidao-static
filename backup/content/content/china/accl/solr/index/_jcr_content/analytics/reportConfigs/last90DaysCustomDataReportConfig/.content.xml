@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:PollConfigFolder"
+    getAllItems="{Boolean}true"
+    managedPollConfig="aem-analytics-integration-last90Days"
+    preferPublishReports="{Boolean}true"
+    resolveByPageName="{Boolean}true"
+    saveOnPage="last90Days"
+    source="screport:default"/>

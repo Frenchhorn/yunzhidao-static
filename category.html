@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="max-age=2592000">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <title>安利云知道</title>
+    <link rel="stylesheet" href="styles/style.min.css">
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/landing.js"></script>
+    <script src="json/index.js"></script>
+    <script src="js/vendor/lib.min.js"></script>
+    <script src="js/vendor/main.min.js"></script>
+    <script src="js/searchinput.js"></script>
+    <script src="js/vendor/jquery.cookie.js"></script>
+    <script>
+        var pathnames = location.pathname.split('/');
+        var pathname = pathnames[pathnames.length-1];
+        var categoryPath = pathname.split('.');
+        if (categoryPath.length<4) {
+            location.href='index.html';
+        }
+        var parentPath = '', categoryTitle='';
+        var categoryList = jsonFile.index.category[categoryPath[1]];
+        for (var i=2; i<categoryPath.length; i++) {
+            if (categoryPath[i] === 'html') {
+                break;
+            }
+            parentPath += categoryPath[i] + '.';
+            for (var j=0; j<categoryList.length; j++) {
+                if (categoryList[j].id === categoryPath[i]) {
+                    categoryTitle = categoryList[j].name;
+                    categoryList = categoryList[j].subTags;
+                    break;
+                }
+            }
+        }
+        if (categoryList.length<1) {
+            location.href='index.html';
+        }
+    </script>
+</head>
+<body>
+<div class="main-con" id="categoryPage">
+    <div class="go-top">
+        <div class="inner-con">
+            <div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+                <a href="#top" title="回到顶部">
+                    <span class="am-gotop-title">回到顶部</span>
+                    <i class="am-gotop-icon am-icon-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <header class="common search">
+        <div class="bar-t">
+            <a class="btn-home" href="index.html">
+                <i class="svg-icon icon-16"></i>
+            </a>
+            <div class="text-con am-text-center">
+                <span class="title am-text-truncate"></span>
+                <script>document.getElementsByClassName('title')[0].innerText = categoryTitle</script>
+            </div>
+        </div>
+    </header>
+    <div class="content-body common">
+        <div class="content-group am-margin-top-sm">
+            <ul class="category-list am-avg-sm-3 am-avg-md-5">
+                <script>
+                (function() {
+                    var html = '';
+                    for (var i=0; i<categoryList.length; i++) {
+                        html += '<li>' +
+                                    '<a class="am-text-middle" href="javascript:void(0)" onclick="amwaysearch.components.search.searchByCategory(\'' + categoryPath[1] + '\',\'' + parentPath  + categoryList[i].id + '\',' + (categoryList[i].subTags.length>0) + ',\'' + categoryList[i].redirectLink + '\')">' +
+                                        '<span class="text">' + categoryList[i].name + '</span>' +
+                                    '</a>' +
+                                '</li>';
+                    }
+                    document.write(html);
+                })();
+                </script>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<footer>
+    版权为安利(中国)日用品有限公司所有 <br> 未经许可不得转载或链接  粤ICP备05013154号
+</footer>
+</html>

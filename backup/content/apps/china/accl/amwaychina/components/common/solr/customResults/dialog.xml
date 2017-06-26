@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Dialog"
+    xtype="dialog">
+    <items
+        jcr:primaryType="cq:Widget"
+        xtype="tabpanel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <basicSetting
+                jcr:primaryType="cq:Widget"
+                title="页面设置"
+                xtype="panel">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <title
+                        jcr:primaryType="cq:Widget"
+                        allowBlank="{Boolean}false"
+                        fieldLabel="顶部标题"
+                        name="./title"
+                        regex="/\\S+/"
+                        xtype="textfield"/>
+                    <articlenum_perpage
+                        jcr:primaryType="cq:Widget"
+                        emptyText="请输入正整数"
+                        fieldLabel="每页显示内容上限"
+                        name="./maxArticleNumPerPage"
+                        regex="/^[1-9]\\d*$/"
+                        xtype="textfield"/>
+                    <searchbar
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="是否在页面顶部显示搜索按钮"
+                        name="./addsearchbar"
+                        type="checkbox"
+                        xtype="selection"/>
+                    <viewmore
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="是否在最后一页底部显示查看更多按钮"
+                        name="./addviewmorebutton"
+                        type="checkbox"
+                        xtype="selection"/>
+                </items>
+            </basicSetting>
+            <imageAreaSetting
+                jcr:primaryType="cq:Widget"
+                title="图片区域设置"
+                xtype="panel">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <imageFields
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="图片区域设置"
+                        name="./imageFields"
+                        xtype="multifield">
+                        <fieldConfig
+                            jcr:primaryType="cq:Widget"
+                            layout="form"
+                            xtype="multiFieldPanel">
+                            <items jcr:primaryType="cq:WidgetCollection">
+                                <keyword
+                                    jcr:primaryType="cq:Widget"
+                                    allowBlank="{Boolean}false"
+                                    dName="keyword"
+                                    fieldLabel="搜索关键词"
+                                    regex="/\\S+/"
+                                    width="98%"
+                                    xtype="textfield"/>
+                                <position
+                                    jcr:primaryType="cq:Widget"
+                                    allowBlank="{Boolean}false"
+                                    dName="position"
+                                    emptyText="插入位置必须大于等于零"
+                                    fieldLabel="插入位置"
+                                    regex="/^([1-9]\\d*|0)$/"
+                                    width="98%"
+                                    xtype="textfield"/>
+                            </items>
+                        </fieldConfig>
+                    </imageFields>
+                </items>
+            </imageAreaSetting>
+            <articleSetting
+                jcr:primaryType="cq:Widget"
+                title="文章区域设置"
+                xtype="panel">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <articleUrlFields
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="Please fill article link(s) after adding item(s). Otherwise, please delete blank field(s)."
+                        fieldLabel="文章链接"
+                        name="./articleUrlFields"
+                        xtype="multifield">
+                        <fieldConfig
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="{Boolean}false"
+                            emptyText="文章链接不能包含空格符"
+                            regex="/^http(s)?:\\/{2}\\S+$/"
+                            xtype="textfield"/>
+                    </articleUrlFields>
+                </items>
+            </articleSetting>
+        </items>
+    </items>
+    <listeners
+        jcr:primaryType="nt:unstructured"
+        beforesubmit="function(dialog) {&#xa;&#x9;var idxArray = [];&#xa;&#x9;var positionComponentArr = dialog.find('dName', 'position');&#xa;&#x9;$.each(positionComponentArr, function(index, positionComponent) {&#xa;&#x9;&#x9;var imgIdx = positionComponent.getValue();&#xa;&#x9;&#x9;if(idxArray.indexOf(imgIdx) &lt; 0) {&#xa;&#x9;&#x9;&#x9;idxArray.push(imgIdx);&#xa;&#x9;&#x9;}&#xa;    });&#xa;    if (idxArray.length &lt; positionComponentArr.length) {&#xa;&#x9;    CQ.Ext.Msg.show({ title: 'Invalid input data', msg: '图片区域插入位置不能重复！', icon: CQ.Ext.MessageBox.WARNING, buttons: CQ.Ext.Msg.OK });&#xa;&#x9;    return false;&#xa;    }&#xa;&#x9;var urls = dialog.getField('./articleUrlFields').getValue();&#xa;&#x9;var content = '{&quot;' + yunzhidao.searchInfo.pageId + '&quot;: ' + JSON.stringify(urls) + '}';&#xa;&#x9;amwaysearch.components.customresults.saveArticleUrlsToSolr(content);&#xa;};"/>
+</jcr:root>

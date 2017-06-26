@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="max-age=2592000">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <title>安利云知道</title>
+    <link rel="stylesheet" href="styles/style.min.css">
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/jquery.cookie.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/searchinput.js"></script>
+    <script src="json/index.js"></script>
+    <script src="js/vendor/lib.min.js"></script>
+    <script src="js/vendor/main.min.js"></script>
+    <script>
+        var isAbo = localStorage.isAbo;
+        var isPromotion = localStorage.isPromotion;
+    </script>
+</head>
+<body>
+<div class="main-con" id="searchInputPage">
+    <div class="go-top">
+        <div class="inner-con">
+            <div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+                <a href="#top" title="回到顶部">
+                    <span class="am-gotop-title">回到顶部</span>
+                    <i class="am-gotop-icon am-icon-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <header class="common search">
+        <div class="bar-t">
+            <button type="button" class="btn-home" onclick="history.back()">
+                <i class="svg-icon icon-37"></i>
+            </button>
+            <div class="text-con am-text-center">
+                <span class="title am-text-truncate"></span>
+                <div class="option-group">
+                    <label class="radio-label">
+                        <input class="radio" type="radio" name="searchType" value="all" id="option1"><span class="text">全部</span>
+                    </label>
+                    <label class="radio-label">
+                        <input class="radio" type="radio" name="searchType" value="video" id="option2"><span class="text">视频</span>
+                    </label>
+                    <label class="radio-label">
+                        <input class="radio" type="radio" name="searchType" value="image" id="option3"><span class="text">图片</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="search-bar">
+            <div class="am-input-group am-padding-left am-padding-right am-padding-bottom-sm">
+                <input id="searchWord" type="text" class="search-input am-form-field" placeholder="请输入搜索名称">
+                <div class="clear-con">
+                    <a href="javascript:void (0);" class="btn-clear am-icon-btn am-icon-close"></a>
+                </div>
+                <span class="am-input-group-btn">
+                    <button class="search-btn am-btn am-btn-default" type="button" onclick="amwaysearch.components.searchinput.onSearchClick()">
+                        <i class="svg-icon icon-32"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </header>
+    <div class="content-body search">
+        <div id="hotword" class="content-group am-margin-top-sm" style="display:none">
+            <h3 class="title-left">热词</h3>
+            <div class="content-box">
+                <div class="hot-keys_search">
+                    <script>
+                        (function() {
+                            var hotword = jsonFile.index.hotword || {};
+                            if (hotword.length === 0) {
+                                document.getElementById('hotword').style.display = 'none';
+                                return false;
+                            }
+
+                            var html = '', href = '';
+                            for (var i = 0; i < hotword.length; i++) {
+                                if (!!hotword[i].redirectLink) {
+                                    href = hotword[i].redirectLink;
+                                } else if (hotword[i].tags.length > 0) {
+                                    href = "searchResults.html?category="+(hotword[i].displayWord || hotword[i].searchWord)+"&categoryType=hotWord";
+                                } else {
+                                    href = "searchResults.html?keyword="+(hotword[i].searchWord || hotword[i].displayWord)+"&searchType=all";                                    
+                                }
+
+                                html += '<a href="' + href + '">' + (hotword[i].displayWord || hotword[i].searchWord) + '</a>';
+                            }
+                            document.write(html);
+                        })();
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div id="searchHistory" class="content-group am-margin-top-sm" style="display: none">
+            <h3 class="title-left">历史</h3>
+            <div class="content-box">
+                <div class="history-keys">
+                </div>
+                <button type="button" class="btn-w">
+                    <i class="am-icon am-icon-trash-o am-icon-sm"></i>
+                    <span>清除历史记录</span>
+                </button>
+            </div>
+        </div>
+        <div id="associateWords" class="content-group associate am-margin-top-sm">
+            <div class="content-box">
+                <div class="associate-keys">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer>
+    版权为安利(中国)日用品有限公司所有 <br> 未经许可不得转载或链接  粤ICP备05013154号
+</footer>
+</html>

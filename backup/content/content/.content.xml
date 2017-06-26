@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:rep="internal"
+    jcr:mixinTypes="[mix:lockable,rep:AccessControllable,sling:Redirect]"
+    jcr:primaryType="sling:OrderedFolder"
+    sling:resourceType="sling:redirect"
+    sling:target="/content/china/accl/amwaychina/zh_cn/default.html">
+    <catalogs/>
+    <dam/>
+    <launches/>
+    <usergenerated/>
+    <rep:policy/>
+    <amwaychina/>
+    <amwaylife/>
+    <acf/>
+    <healthrun/>
+    <doublex/>
+    <healthrun-mobi/>
+    <doubleX-hk/>
+    <china/>
+    <doublex-mobi/>
+    <mac/>
+    <publications/>
+    <iReport/>
+    <dev/>
+    <projects/>
+    <geometrixx-outdoors/>
+    <geometrixx-outdoors-mobile/>
+    <communities/>
+    <campaigns/>
+    <yunzhidao/>
+</jcr:root>

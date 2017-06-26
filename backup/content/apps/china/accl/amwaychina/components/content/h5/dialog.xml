@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    xtype="dialog">
+    <items
+        jcr:primaryType="cq:Widget"
+        xtype="tabpanel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <tab1
+                jcr:primaryType="cq:Panel"
+                title="H5 Content">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <h5Description
+                        cq:lastReplicated="{Date}2016-06-01T18:57:33.435+08:00"
+                        cq:lastReplicatedBy="adobe"
+                        cq:lastReplicationAction="Activate"
+                        jcr:mixinTypes="[cq:ReplicationStatus]"
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="H5 Description"
+                        name="./h5Description"
+                        xtype="textarea"/>
+                    <h5Url
+                        cq:lastReplicated="{Date}2016-06-01T18:57:34.571+08:00"
+                        cq:lastReplicatedBy="adobe"
+                        cq:lastReplicationAction="Activate"
+                        jcr:mixinTypes="[cq:ReplicationStatus]"
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="H5 URL"
+                        name="./h5Url"
+                        xtype="textfield"/>
+                </items>
+            </tab1>
+        </items>
+    </items>
+</jcr:root>

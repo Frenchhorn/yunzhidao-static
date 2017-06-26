@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2016-12-27T04:22:42.225+08:00"
+        cq:lastModifiedBy="admin"
+        cq:lastReplicated="{Date}2016-12-20T20:36:04.138+08:00"
+        cq:lastReplicatedBy="isdadmin"
+        cq:lastReplicationAction="Activate"
+        cq:template="/apps/china/accl/amwaychina/templates/search_new_template"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[mix:versionable]"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="文章统计"
+        jcr:uuid="49a16f9c-5375-4f44-a41b-128aab7dce68"
+        sling:resourceType="/apps/china/accl/amwaychina/components/pages/search_new_page"
+        pageId="49a16f9c-5375-4f44-a41b-128aab7dce68">
+        <par
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/parsys">
+            <articlestatistics
+                jcr:created="{Date}2016-11-04T13:14:56.076+08:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2016-12-27T04:22:42.221+08:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="china/accl/amwaychina/components/common/solr/articleStatistics"
+                columnFields="[{&quot;columnLabel&quot;:&quot;文章标题&quot;\,&quot;columnKey&quot;:&quot;title&quot;},{&quot;columnLabel&quot;:&quot;发布时间&quot;\,&quot;columnKey&quot;:&quot;jcr:content/maintitle/publishDate&quot;},{&quot;columnLabel&quot;:&quot;是否加入推广助手&quot;\,&quot;columnKey&quot;:&quot;jcr:content/maintitle/addpromotion&quot;},{&quot;columnLabel&quot;:&quot;渠道&quot;\,&quot;columnKey&quot;:&quot;jcr:content/maintitle/source&quot;},{&quot;columnLabel&quot;:&quot;文章AEM路径&quot;\,&quot;columnKey&quot;:&quot;path&quot;}]"
+                pageTitle="Content Hub 文章统计"/>
+        </par>
+    </jcr:content>
+</jcr:root>

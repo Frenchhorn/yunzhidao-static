@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    xtype="dialog">
+    <items
+        jcr:primaryType="cq:Widget"
+        xtype="tabpanel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <tab1
+                jcr:primaryType="cq:Panel"
+                title="Page Setting">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <pageTitle
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Page Title"
+                        name="./pageTitle"
+                        xtype="textfield"/>
+                    <columnFields
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Field Columns"
+                        name="./columnFields"
+                        xtype="multifield">
+                        <fieldConfig
+                            jcr:primaryType="cq:Widget"
+                            layout="form"
+                            xtype="multiFieldPanel">
+                            <items jcr:primaryType="cq:WidgetCollection">
+                                <columnLabel
+                                    jcr:primaryType="cq:Widget"
+                                    allowBlank="{Boolean}false"
+                                    width="98%"
+                                    dName="columnLabel"
+                                    fieldLabel="Column Label"
+                                    xtype="textfield"/>
+                                <columnKey
+                                    jcr:primaryType="cq:Widget"
+                                    allowBlank="{Boolean}false"
+                                    dName="columnKey"
+                                    fieldLabel="Column Key"
+                                    type="select"
+                                    xtype="selection">
+                                    <options jcr:primaryType="cq:WidgetCollection">
+                                        <option1
+                                            jcr:primaryType="nt:unstructured"
+                                            text="文章标题[title]"
+                                            value="title"/>
+                                        <option2
+                                            jcr:primaryType="nt:unstructured"
+                                            text="发布时间[jcr:content/maintitle/publishDate]"
+                                            value="jcr:content/maintitle/publishDate"/>
+                                        <option3
+                                            jcr:primaryType="nt:unstructured"
+                                            text="是否加入推广助手[jcr:content/maintitle/addpromotion]"
+                                            value="jcr:content/maintitle/addpromotion"/>
+                                        <option4
+                                            jcr:primaryType="nt:unstructured"
+                                            text="发布渠道[jcr:content/maintitle/source]"
+                                            value="jcr:content/maintitle/source"/>
+                                        <option5
+                                            jcr:primaryType="nt:unstructured"
+                                            text="AEM路径[path]"
+                                            value="path"/>
+                                        <option6
+                                            jcr:primaryType="nt:unstructured"
+                                            text="标签[tags]"
+                                            value="tags"/>
+                                        <option7
+                                            jcr:primaryType="nt:unstructured"
+                                            text="是否仅ABO可见[jcr:content/maintitle/read]"
+                                            value="jcr:content/maintitle/read"/>
+                                        <option8
+                                            jcr:primaryType="nt:unstructured"
+                                            text="是否不可分享[jcr:content/maintitle/share]"
+                                            value="jcr:content/maintitle/share"/>
+                                        <option9
+                                            jcr:primaryType="nt:unstructured"
+                                            text="激活状态[jcr:content/cq:lastReplicationAction]"
+                                            value="jcr:content/cq:lastReplicationAction"/>
+                                        <option10
+                                            jcr:primaryType="nt:unstructured"
+                                            text="最后修改时间[jcr:content/cq:lastModified]"
+                                            value="jcr:content/cq:lastModified"/>
+                                    </options>
+                                </columnKey>
+                            </items>
+                        </fieldConfig>
+                    </columnFields>
+                </items>
+            </tab1>
+        </items>
+    </items>
+</jcr:root>

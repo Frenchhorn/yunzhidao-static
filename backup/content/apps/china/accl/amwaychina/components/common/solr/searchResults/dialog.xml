@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    xtype="dialog">
+    <items
+        jcr:primaryType="cq:Widget"
+        xtype="tabpanel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <tab1
+                jcr:primaryType="cq:Panel"
+                title="Solr Server">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <maxTitle
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="MaxTitle"
+                        name="./maxTitle"
+                        xtype="numberfield"/>
+                    <maxDescription
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="MaxDescription"
+                        name="./maxDescription"
+                        xtype="numberfield"/>
+                    <maxStrippedContent
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="MaxStrippedContent"
+                        name="./maxStrippedContent"
+                        xtype="numberfield"/>
+                    <indexpath
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="index Path"
+                        name="./indexpath"
+                        xtype="textfield"/>
+                </items>
+            </tab1>
+        </items>
+    </items>
+</jcr:root>

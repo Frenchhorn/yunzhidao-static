@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <link rel="stylesheet" href="styles/style.min.css">
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/searchresult.js"></script>
+    <script src="json/index.js"></script>
+    <script src="js/vendor/lib.min.js"></script>
+    <script src="js/vendor/main.min.js"></script>
+    <script src="js/searchinput.js"></script>
+    <script src="js/vendor/jquery.cookie.js"></script>
+    <script>
+        var isAbo = localStorage.isAbo;
+        var isPromotion = localStorage.isPromotion;
+    </script>
+</head>
+<body>
+<!--[if IE 9]>
+    <script>
+        window.history.pushState = function(state, title, url) {
+            window.location.href = url;
+        };
+    </script>
+<![endif]-->
+
+<div id='searchResultPage' class="main-con">
+    <header class="common search">
+        <div class="bar-b" id="doc-dropdown-justify">
+            <div class="filter cell-box am-dropdown" data-am-dropdown="{justify: '#doc-dropdown-justify'}">
+                <button class="am-btn am-dropdown-toggle">
+                    <span class="type">综合排序</span>
+                    <span class="am-icon-caret-down"></span>
+                </button>
+                <ul class="am-dropdown-content">
+                    <li id="default" class="am-active"><a href="javascript:void(0);" onclick="amwaysearch.components.searchresult.sortSearchResult(this);" data-type="综合排序">综合排序</a></li>
+                    <li id="flowDesc"><a href="javascript:void(0);" onclick="amwaysearch.components.searchresult.sortSearchResult(this);" data-type="热度排序">热度排序（从高到低）</a></li>
+                    <li id="flowAsc"><a href="javascript:void(0);" onclick="amwaysearch.components.searchresult.sortSearchResult(this);" data-type="热度排序">热度排序（从低到高）</a></li>
+                    <li id="dateDesc"><a href="javascript:void(0);" onclick="amwaysearch.components.searchresult.sortSearchResult(this);" data-type="时间排序">时间排序（从高到低）</a></li>
+                    <li id="dateAsc"><a href="javascript:void(0);" onclick="amwaysearch.components.searchresult.sortSearchResult(this);" data-type="时间排序">时间排序（从低到高）</a></li>
+                </ul>
+            </div>
+            <div class="cell-box">
+                <label class="am-checkbox-inline">
+                    <input type="checkbox" name= "trainingFilter" onclick="amwaysearch.components.searchresult.filterSearchResult();">
+                    <i class="icon am-icon-check"></i>
+                    <span class="text">培训</span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-body common">
+    </div>
+
+    <div class="go-top">
+        <div class="inner-con">
+            <div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+                <a href="#top" title="回到顶部">
+                    <span class="am-gotop-title">回到顶部</span>
+                    <i class="am-gotop-icon am-icon-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var updateSearchResultInfo = function() {
+        yunzhidao.searchResultInfo.searchType = amwaysearch.components.search.getValueFromParameterName('searchType');
+        yunzhidao.searchResultInfo.category = amwaysearch.components.search.getValueFromParameterName('category') || '';
+        yunzhidao.searchResultInfo.categoryType = amwaysearch.components.search.getValueFromParameterName('categoryType') || '';
+        var categoryTags = [];
+        var searchPath = '';
+        if (yunzhidao.searchResultInfo.categoryType === 'news' ||
+            yunzhidao.searchResultInfo.categoryType === 'image' ||
+            yunzhidao.searchResultInfo.categoryType === 'video' ||
+            yunzhidao.searchResultInfo.categoryType === 'training'){
+            var categoryList = jsonFile.index.category[yunzhidao.searchResultInfo.categoryType];
+            var categoryTitleList = yunzhidao.searchResultInfo.category.split('.');
+            var categoryTitle;
+            for (var i=0; i<categoryTitleList.length; i++){
+                for (var j=0; j<categoryList.length; j++){
+                    if (categoryList[j].id === categoryTitleList[i]){
+                        categoryTitle = categoryList[j].name;
+                        categoryTags = categoryList[j].tags;
+                        searchPath = categoryList[j].path;
+                        categoryList = categoryList[j].subTags || [];
+                    }
+                }
+            }
+            yunzhidao.searchResultInfo.categoryTitle = categoryTitle;
+        } else if (yunzhidao.searchResultInfo.categoryType === 'howWord'){
+            yunzhidao.searchResultInfo.categoryTitle = yunzhidao.searchResultInfo.category;
+        }
+        yunzhidao.searchResultInfo.videoTagName = '视频';
+        yunzhidao.searchResultInfo.trainingTagName = '培训';
+        yunzhidao.searchResultInfo.searchPath = searchPath;
+        yunzhidao.searchResultInfo.categoryTags = categoryTags;
+        yunzhidao.searchResultInfo.hotWordList = [];
+    };
+</script>
+
+</body>
+</html>

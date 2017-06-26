@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="sling:OsgiConfig"
+    path="[]"
+    contenthub.sso.enabled="{Boolean}false"
+    contenthub.sso.loginform="/content/china/accl/ch_kit/sso/ssologin.html"
+    contenthub.sso.ignoredpath="[/content/china/accl/ch_kit/sso/ssologin,/content/china/accl/ch/_jcr_content/]"
+    userMappingString="[pc/*/chuser,sr/*/chuser,ss/*/chuser,sa/*/chuser,pa/*/chuser]"
+/>

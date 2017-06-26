@@ -1,0 +1,26 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="login/logout.css">
+</head>
+<body>
+<div class="main-con prompt-con logout">
+    <div class="logo"></div>
+    <div class="text-con">
+        <div class="title">您当前已登录！</div>
+        <div>点击下方“返回首页”按钮开始业务查询之旅。</div>
+    </div>
+    <div class="btn-con">
+        <div class="btn red" onclick="location.href='index.html'">返回首页</div>
+        <div class="btn blue">退出登录</div>
+    </div>
+    <div class="copyright">版权为安利（中国）日用品有限公司所有，未经许可不得转载或链接，2006年粵ICP备05013154 </div>
+</div>
+</body>
+<script>
+    document.getElementsByClassName('blue')[0].onclick = function() {
+        delete localStorage.isAbo;
+        delete localStorage.isPromotion;
+        location.href='index.html';
+    }
+</script>
+</html>

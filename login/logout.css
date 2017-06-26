@@ -1,0 +1,166 @@
+.hidden {
+    display: none !important
+}
+
+.abs {
+    position: absolute
+}
+
+.text-center {
+    text-align: center
+}
+
+.init-con {
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+
+.init-content {
+    position: absolute;
+    font-size: 0;
+    white-space: nowrap;
+    text-align: center;
+    width: 100%
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+a,
+button,
+div,
+input,
+textarea,
+select {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif
+}
+
+html,
+body {
+    height: 100%
+}
+
+.ssologout.section,
+.par.parsys {
+    height: 100%
+}
+
+body {
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #444444
+}
+
+.main-con {
+    max-width: 670px;
+    min-width: 320px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+
+.prompt-con {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: #747474;
+    text-align: center
+}
+
+.prompt-con .btn {
+    width: 180px;
+    height: 36px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #686868;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: 150px;
+    margin-left: -90px;
+    line-height: 36px
+}
+
+.prompt-con .btn.blue {
+    background-color: #002c63;
+    cursor:pointer;
+}
+
+.prompt-con .btn.red {
+    background-color: #e5003e;
+    cursor:pointer;
+}
+
+.prompt-con.logout .logo {
+    position: absolute;
+    background-image: url("./logo_amway_tl.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    width: 206px;
+    height: 86.5px;
+    top: 0;
+    left: 0
+}
+
+.prompt-con.logout .text-con {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    padding: 0 10px;
+    margin-top: -160px
+}
+
+.prompt-con.logout .text-con .title {
+    color: #002c63;
+    font-size: 23px;
+    margin-bottom: 20px
+}
+
+.prompt-con.logout .btn-con {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -30px
+}
+
+.prompt-con.logout .btn-con .btn {
+    position: relative;
+    top: 0;
+    margin-top: 0
+}
+
+.prompt-con.logout .btn-con .btn+.btn {
+    margin-top: 30px
+}
+
+.prompt-con.logout .copyright {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    color: #a3a3a3;
+    padding: 20px;
+    margin-top: 100px;
+    font-size: 14px
+}

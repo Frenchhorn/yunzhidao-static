@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+<title>安利（中国）认证中心</title>
+<link href="./login/login.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div id="logo_iphone">
+      <div class="logobox"><img id="imgLogo" src="./login/logo2.jpg"></div>
+      <div class="tittlebox"><img id="imgTitle" src="./login/title.jpg"></div>
+      <div style="clear:both"></div>
+    </div>
+    <div class="addbox">此认证功能授权给 <span class="redfont">DCP application</span></div>
+
+    <div id="login_box">
+        安利号码：360 - <br> 
+        <input type="text" id="ada" name="ada" class="input" msg="请随便输入号码" placeholder="请随便输入号码" value="" tabindex="1"><br> 
+        登录密码：<br> 
+        <input type="password" id="password" name="password" class="input0" msg="请随便输入密码" placeholder="请随便输入密码" tabindex="2"><br>
+        <a href="javascript:void(0)" style="vertical-align: text-top;font-size:12px">登录说明<span class="arraw">&gt;</span></a>         
+        <a href="javascript:void(0)" style="vertical-align: text-top;font-size:12px" id="wjmm">忘记密码<span class="arraw">&gt;</span></a>
+        <input id="btnLogin" type="button" style="background:url(login/btn_login.gif) repeat-x scroll transparent;" value="登录" tabindex="4">
+        <input id="btnCancel" type="button" style="background:url(login/btn_cancel.gif) repeat-x scroll transparent;" value="取消" tabindex="5">
+    </div>
+    
+    <p class="copy_right">版权为安利（中国）日用品有限公司所有未经许可不得转载或链接，2006年粤ICP备05013154</p>
+</body>
+<script>
+    document.getElementById('btnLogin').onclick = function(){
+        localStorage.isAbo = true;
+        localStorage.isPromotion = true;
+        location.href = 'index.html';
+    }
+    document.getElementById('btnCancel').onclick = function(){
+        location.href = 'index.html';
+    }
+</script>
+</html>

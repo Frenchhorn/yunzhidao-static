@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="max-age=2592000">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <title>安利云知道</title>
+    <link rel="stylesheet" href="styles/style.min.css">
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/landing.js"></script>
+    <script src="json/index.js"></script>
+    <script src="js/vendor/lib.min.js"></script>
+    <script src="js/vendor/main.min.js"></script>
+    <script src="js/searchinput.js"></script>
+    <script src="js/vendor/jquery.cookie.js"></script>
+    <script>
+        var isAbo = localStorage.isAbo;
+        var isPromotion = localStorage.isPromotion;
+    </script>
+</head>
+<body>
+<div class="main-con" id='landingPage'>
+    <div class="go-top">
+        <div class="inner-con">
+            <div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+                <a href="#top" title="回到顶部">
+                    <span class="am-gotop-title">回到顶部</span>
+                    <i class="am-gotop-icon am-icon-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <header class="index" id="background">
+        <script>document.getElementById('background').style.backgroundImage  = jsonFile.index.background ? jsonFile.index.background : '';</script>
+        <div class="bg-b"></div>
+        <div class="bar-t">
+            <button type="button" class="btn-user"></button>
+        </div>
+        <div class="search-bar am-text-center">
+            <div class="option-group">
+                <label class="radio-label">
+                    <input class="radio" type="radio" name="searchType" value="all" id="option1" checked="checked"><span class="text">全部</span>
+                </label>
+                <label class="radio-label">
+                    <input class="radio" type="radio" name="searchType" value="video" id="option2"><span class="text">视频</span>
+                </label>
+                <label class="radio-label">
+                    <input class="radio" type="radio" name="searchType" value="image" id="option3"><span class="text">图片</span>
+                </label>
+            </div>
+            <div id="searchBar" class="am-input-group am-padding-left am-padding-right">
+                <span class="am-input-group-btn">
+                    <button class="search-btn am-btn am-btn-default" type="button">
+                        <i class="svg-icon icon-17"></i>
+                    </button>
+                </span>
+                <div class="search-input am-form-field">请输入搜索名称</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-body index">
+        <div class="content-group">
+            <h3 class="title-left am-margin-top">热门分类</h3>
+            <div class="content-box">
+                <div class="am-tabs" data-am-tabs>
+                    <ul id="categoryType" class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+                        <li categoryType="news" class="am-active"><a href="#news">资讯</a></li>
+                        <li categoryType="video"><a href="#video">视频</a></li>
+                        <li categoryType="image"><a href="#image">图片</a></li>
+                        <li categoryType="training" style="display:none"><a href="#training">培训</a></li>
+                    </ul>
+
+                    <div class="am-tabs-bd">
+                        <div class="am-tab-panel am-fade am-in am-active" id="news">
+                            <ul class="btn-list am-avg-sm-4">
+                                <script>
+                                    (function(){
+                                        var news = jsonFile.index.category.news || {};
+                                        if (news.length === 0) {return false;}
+                                        var html = '', href = '';
+                                        for (var i=0; i<news.length; i++){
+                                            if (!!news[i].redirectLink) {
+                                                href = news[i].redirectLink;
+                                            } else if (!!news[i].subTags && news[i].subTags.length>0) {
+                                                href = 'category.news.' + news[i].id + '.html';
+                                            } else {
+                                                href = 'searchResults.html?categoryType=news&category=' + news[i].id;
+                                            }
+                                            html += '<li>' +
+                                                        '<a href="' + href + '">' +
+                                                            '<i class="svg-icon ' + news[i].image + '"></i>' +
+                                                            '<span class="text am-text-truncate">' + news[i].name + '</span>' +
+                                                        '</a>' +
+                                                    '</li>';
+                                        }
+                                        if (news.length%4 !== 0){
+                                            for (var j=news.length%4; j<4; j++){
+                                                html += '<li></li>';
+                                            }
+                                        }
+                                        document.write(html);
+                                    })();
+                                </script>
+                            </ul>
+                        </div>
+
+                        <div class="am-tab-panel am-fade" id="video">
+                            <ul class="btn-list am-avg-sm-4">
+                                <script>
+                                    (function(){
+                                        var video = jsonFile.index.category.video || {};
+                                        if (video.length === 0) {return false;}
+                                        var html = '', href='';
+                                        for (var i=0; i<video.length; i++){
+                                            if (!!video[i].redirectLink) {
+                                                href = video[i].redirectLink;
+                                            } else if (!!video[i].subTags && video[i].subTags.length>0) {
+                                                href = 'category.video.' + video[i].id + '.html';
+                                            } else {
+                                                href = 'searchResults.html?categoryType=video&category=' + video[i].id;
+                                            }
+                                            html += '<li>' +
+                                                        '<a href="' + href + '">' +
+                                                            '<i class="svg-icon ' + video[i].image + '"></i>' +
+                                                            '<span class="text am-text-truncate">' + video[i].name + '</span>' +
+                                                        '</a>' +
+                                                    '</li>';
+                                        }
+                                        if (video.length%4 !== 0){
+                                            for (var j=video.length%4; j<4; j++){
+                                                html += '<li></li>';
+                                            }
+                                        }
+                                        document.write(html);
+                                    })();
+                                </script>
+                            </ul>
+                        </div>
+
+                        <div class="am-tab-panel am-fade" id="image">
+                            <ul class="btn-list-img am-avg-sm-3">
+                                <script>
+                                    (function(){
+                                        var image = jsonFile.index.category.image || {};
+                                        if (image.length === 0) {return false;}
+                                        var html = '', href='';
+                                        for (var i=0; i<image.length; i++){
+                                            if (!!image[i].redirectLink) {
+                                                href = image[i].redirectLink;
+                                            } else {
+                                                href = 'searchResults.html?categoryType=image&category=' + image[i].id;
+                                            }
+                                            html += '<li>' +
+                                                        '<a class="thumbnail" href="' + href + '" style="background-image: url(\'' + image[i].image + '\')">' +
+                                                            '<span class="text am-text-truncate bgc ' + image[i].color + '">' + image[i].name + '</span>' +
+                                                        '</a>' +
+                                                    '</li>';
+                                        }
+                                        document.write(html);
+                                    })();
+                                </script>
+                            </ul>
+                        </div>
+
+                        <div class="am-tab-panel am-fade" id="training">
+                            <ul class="btn-list am-avg-sm-4">
+                                <script>
+                                    (function(){
+                                        if (!isAbo) {return false;}
+                                        var training = jsonFile.index.category.training || {};
+                                        if (training.length === 0) {return false;}
+                                        var html = '', href='';
+                                        for (var i=0; i<training.length; i++){
+                                            if (!!training[i].redirectLink) {
+                                                href = training[i].redirectLink;
+                                            } else if (!!training[i].subTags && training[i].subTags.length>0) {
+                                                href = 'category.training.' + training[i].id + '.html';
+                                            }
+                                            html += '<li>' +
+                                                        '<a href="' + href + '">' +
+                                                            '<i class="svg-icon ' + training[i].image + '"></i>' +
+                                                            '<span class="text am-text-truncate">' + training[i].name + '</span>' +
+                                                        '</a>' +
+                                                    '</li>';
+                                        }
+                                        if (training.length%4 !== 0){
+                                            for (var j=training.length%4; j<4; j++){
+                                                html += '<li></li>';
+                                            }
+                                        }
+                                        document.write(html);
+                                    })();
+                                </script>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="chButton" type="button" class="btn-w am-margin-top-xs" style="display:none">
+                <i class="svg-icon icon-13"></i>
+                <span>推广助手</span>
+            </button>
+        </div>
+
+        <div id="dailyUpdate" class="content-group">
+            <script>
+                document.write('<h3 class="title-left am-margin-top">' + jsonFile.index.dailyUpdate['title'] + '</h3>')
+            </script>
+            <div class="content-box">
+                <ul class="info-list">
+                </ul>
+                <button id="changeDailyUpdate" type="button" class="btn-w">
+                    <i class="svg-icon icon-14"></i>
+                    <script>document.write('<span>' + jsonFile.index.dailyUpdate['buttonTitle'] + '</span>')</script>
+                </button>
+            </div>
+        </div>
+
+        <div class="content-group" id="hotword">
+            <h3 class="title-left am-margin-top">热词</h3>
+            <div class="content-box">
+                <div class="hot-keys_index am-text-center">
+                    <script>
+                        (function() {
+                            var hotword = jsonFile.index.hotword || {};
+                            if (hotword.length === 0) {
+                                document.getElementById('hotword').style.display = 'none';
+                                return false;
+                            }
+
+                            var html = '', href = '';
+                            for (var i = 0; i < hotword.length; i++) {
+                                if (!!hotword[i].redirectLink) {
+                                    href = hotword[i].redirectLink;
+                                } else if (hotword[i].tags.length > 0) {
+                                    href = "searchResults.html?category="+(hotword[i].displayWord || hotword[i].searchWord)+"&categoryType=hotWord";
+                                } else {
+                                    href = "searchResults.html?keyword="+(hotword[i].searchWord || hotword[i].displayWord)+"&searchType=all";                                    
+                                }
+
+                                html += '<a href="' + href + '">' + (hotword[i].displayWord || hotword[i].searchWord) + '</a>';
+                            }
+                            document.write(html);
+                        })();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    //Login Button
+    document.getElementsByClassName('btn-user')[0].onclick = function() {
+        if (!isAbo && !isPromotion) {
+            location.href = 'login.html';
+        } else {
+            location.href = 'logout.html';
+        }
+    };
+
+    if (!!isPromotion) {
+        var chButton = document.getElementById('chButton');
+        chButton.style.display = 'block';
+        chButton.onclick = function() {
+            window.location.href = window.yunzhidao.domainInfo.aaWorkShopDomain + '/content/china/accl/aaworkshop/assistant.html';
+        };
+    }
+
+    var articlesArray = jsonFile.index.dailyUpdate.articles;
+    $(document).ready(function() {
+        amwaysearch.components.landing.initDailyUpdate(articlesArray);
+        amwaysearch.components.landing.displayButtonAndTrain();
+    });
+</script>
+<footer>
+    版权为安利(中国)日用品有限公司所有 <br> 未经许可不得转载或链接  粤ICP备05013154号
+</footer>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    cq:lastReplicated="{Date}2016-06-01T18:56:57.639+08:00"
+    cq:lastReplicatedBy="adobe"
+    cq:lastReplicationAction="Activate"
+    jcr:description="H5 Content Page"
+    jcr:mixinTypes="[cq:ReplicationStatus]"
+    jcr:primaryType="cq:Component"
+    jcr:title="h5ContentPage"
+    allowedParents="[*/parsys]"
+    componentGroup="安利中国"/>

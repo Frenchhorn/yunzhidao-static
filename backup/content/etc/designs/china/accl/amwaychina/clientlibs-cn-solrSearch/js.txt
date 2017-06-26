@@ -1,0 +1,13 @@
+#base=js
+vendor/jquery.min.js
+vendor/lib.min.js
+vendor/jquery.cookie.js
+vendor/main.min.js
+main.js
+share.js
+wechatInterface.js
+search.js
+landing.js
+searchresult.js
+customresults.js
+searchinput.js
